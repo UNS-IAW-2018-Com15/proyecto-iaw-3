@@ -18,10 +18,24 @@
 	<div class="gral-container" id="gral-container">
 		<div class="container">
 			<h2 class="titulo-ppal"> Complejos de Futbol </h2>
-			
-			    {% for comp in complejos %}
-			        <div class="well well-sm">{{ comp.nombre }}</div>
-			    {% endfor %}
+				<div class="row">
+				    {% for comp in complejos %}  
+				      	<div class="col-xs-6">
+				      		<div id="comp-{{comp.id}}" class="well well-sm complejo-row">
+								<span class="izquierda">
+									{{ comp.nombre }}
+								</span>
+								<span class="derecha">
+					      			<button onclick="addCancha({{comp.id}})" class="glyphicon glyphicon-th-list btn verde"></button>
+						      		<button class="glyphicon glyphicon-pencil btn azul"></button>
+						      		<button onclick="remove({{comp.id}}" class="glyphicon glyphicon-remove btn rojo"></button>
+					      		</span>
+				      		</div>
+
+
+						</div>
+				    {% endfor %}
+				</div>
 			
 		</div>
 	</div>
