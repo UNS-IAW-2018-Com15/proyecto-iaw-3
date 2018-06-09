@@ -18,8 +18,8 @@ Route::get('/', function () {
 Route::get('/complejos', 'AdminController@show');
 
 Route::group(['prefix' => 'complejos'], function() {
-    
-	Route::get('/add', 'AdminController@add');
 
+	Route::get('/add', 'AdminController@add');
+  Route::get('/delete/{id}','AdminController@delete');
 	Route::post('/add', 'AdminController@save');
 });

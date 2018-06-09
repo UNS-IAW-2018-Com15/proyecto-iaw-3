@@ -40,7 +40,7 @@ class AdminController extends Controller {
   	$complejo->horarios = [$request->lunes, $request->martes, $request->miercoles,
   		$request->jueves, $request->viernes, $request->sabado, $request->domingo];
   	$complejo->save();
-  	return redirect('/complejos')->with(['success' => 'Se ha creado un nuevo complejo.']); 
+  	return redirect('/complejos')->with(['success' => 'Se ha creado un nuevo complejo.']);
   }
 
 /*
@@ -68,7 +68,7 @@ class AdminController extends Controller {
 		empty($request->jueves) || empty($request->viernes) || empty($request->sabado) ||
 		empty($request->domingo))
 		return "Los horarios no pueden estar vacios.";
-	if(!$this->horarioCorrecto($request->lunes) || !$this->horarioCorrecto($request->martes) || 
+	if(!$this->horarioCorrecto($request->lunes) || !$this->horarioCorrecto($request->martes) ||
 		!$this->horarioCorrecto($request->miercoles) || !$this->horarioCorrecto($request->jueves) ||
 		!$this->horarioCorrecto($request->viernes) || !$this->horarioCorrecto($request->sabado) ||
 		!$this->horarioCorrecto($request->domingo))
@@ -86,4 +86,12 @@ class AdminController extends Controller {
   	//Faltan mas chequeos... (>=0 y <=24 c/u)
   }
 
+public function delete($id){
+  $comp = Complejo::where('id',$id->nombre)->get();
+  if(!isset($comp[0]))
+      return response()->json(['error' => 'error'],401);
+  else
+      Complejo::where('id',$id->nombre)->delete();
+  return response()->json(['success' => 'success'],200);
+}
 }
