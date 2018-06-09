@@ -2,7 +2,8 @@
 
 {% block headimports %}
   <!--CDN Sweet Alert-->
-  <script src="/javascripts/sweetalert2.all.js"></script>
+  <script src="/js/sweetalert2.all.js"></script>
+  <script src="/js/remove.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -26,9 +27,9 @@
 									{{ comp.nombre }}
 								</span>
 								<span class="derecha">
-					      			<button onclick="addCancha({{comp.id}})" class="glyphicon glyphicon-th-list btn verde"></button>
+					      			<button onclick="addCancha('{{comp.id}}')" class="glyphicon glyphicon-th-list btn verde"></button>
 						      		<button class="glyphicon glyphicon-pencil btn azul"></button>
-						      		<button onclick="remove({{comp.id}}" class="glyphicon glyphicon-remove btn rojo"></button>
+						      		<button onclick="remove('{{comp.id}}')" class="glyphicon glyphicon-remove btn rojo"></button>
 					      		</span>
 				      		</div>
 

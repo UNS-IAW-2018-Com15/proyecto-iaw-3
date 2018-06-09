@@ -6,7 +6,7 @@ function remove(id){
     confirmButtonText: 'Si, eliminar',
     showLoaderOnConfirm: true,
     preConfirm: () => {
-      return fetch('/complejos/delete/'+id))
+      return fetch('/complejos/delete/'+id)
         .then(response => response.json())
         .then(data => swal.insertQueueStep({type: 'success', title : 'Complejo eliminado'}))
         .catch(() => {
