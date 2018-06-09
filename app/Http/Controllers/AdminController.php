@@ -87,11 +87,11 @@ class AdminController extends Controller {
   }
 
 public function delete($id){
-  $comp = Complejo::where('id',$id)->get();
+  $comp = Complejo::where('_id',$id)->get();
   if(!isset($comp[0]))
       return response()->json(['error' => 'error'],401);
   else
-      Complejo::where('id',$id)->delete();
+      Complejo::where('_id',$id)->delete();
   return response()->json(['success' => 'success'],200);
 }
 }
