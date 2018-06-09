@@ -1,0 +1,18 @@
+.dias-horarios{
+	display: flex;
+}
+
+.dia{
+	margin-right: 5px;
+	min-width: 60px;
+}
+
+.btn-mas {
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+}
+
+.btn-chico{
+	background: none;
+	border: none;
+}

@@ -1,0 +1,127 @@
+{% extends 'layout' %}
+
+{% block body %}
+	{% if app.session.get('error') %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+		 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		 <strong>Error! </strong>{{ app.session.get('error')}}.
+		</div>
+			
+	{% endif %}
+	
+	{{parent()}}
+
+	<div class="container">
+		<h2 class="titulo-ppal"> Agregar Complejo </h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Crear</h3>
+			</div>
+			<div class="panel-body">
+				<form id="form-add" action="/complejos/add" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="_token" value="{{ csrf_token('jeje') }}">
+
+					<div class="form-group">
+						<label >Nombre</label>
+						<input class="form-control input-lg" name="nombre" type="text" placeholder="Nombre" maxlength="64">
+					</div>
+
+					<div class="form-group">
+						<label >Direccion</label>
+						<input class="form-control input-lg" name="direccion" type="text" placeholder="Direccion" maxlength="120">
+					</div>
+
+					<div class="form-group">
+						<label >Coordenadas(lat-long)</label>
+						<div class="row">
+							<div class="col-xs-6">
+								<input class="form-control input-lg" name="latitud" type="text" placeholder="Latitud" maxlength="10">
+							</div>
+							<div class="col-xs-6">
+								<input class="form-control input-lg" name="longitud" type="text" placeholder="Longitud" maxlength="10">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label> Teléfono</label>
+						<input class="form-control input-lg" name="telefono" type="text" placeholder="Teléfono" maxlength="32">
+					</div>
+
+					<div class="form-group">
+						<label>Horarios(abre-cierra)</label>
+						<div class="row">
+							<div class="col-xs-1">
+								Lunes
+								<input class="form-control" name="lunes" type="text" placeholder="08-22"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Martes
+								<input class="form-control" name="martes" type="text" placeholder="08-22"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Miércoles
+								<input class="form-control" name="miercoles" type="text" placeholder="08-22"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Jueves
+								<input class="form-control" name="jueves" type="text" placeholder="08-22"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Viernes
+								<input class="form-control" name="viernes" type="text" placeholder="08-22"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Sábado
+								<input class="form-control" name="sabado" type="text" placeholder="08-22"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Domingo
+								<input class="form-control" name="domingo" type="text" placeholder="08-22"   maxlength="5">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label> Canchas </label><br>
+						<div class="row">
+							<div class="col-xs-3">
+								Tamaño
+								<select name="size" class="form-control input-lg">
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+								</select>
+							</div>
+							<div class="col-xs-9">
+								Material
+								<select name="material" class="form-control input-lg">
+									<option value="Alfombra">Alfombra</option>
+									<option value="Sintetico">Sintético</option>
+									<option value="Tierra">Tierra</option>
+									<option value="Cesped">Cesped</option>
+								</select>
+
+							</div>
+							<br>
+							<br>
+						</div>
+						<!--<button type="button" onclick="otraCancha()"  class="btn btn-primary">Nueva</button>-->
+
+
+					</div>
+					<br>
+					<button type="submit" class="btn btn-info btn-comment">Guardar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

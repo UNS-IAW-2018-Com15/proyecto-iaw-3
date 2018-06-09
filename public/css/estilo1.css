@@ -1,0 +1,357 @@
+.logo {
+	height: 80px;
+	/*background: url("../res/logo-blanco.svg") no-repeat;
+	background-size: 60%;*/	
+	display: block;
+	margin-right: 20px;
+	margin-top: -5px;
+}
+
+.navbar-default .navbar-nav > li > a{
+	background-color:#218c74;
+	color: white;
+    font-family: 'Fredoka One', 'Open Sans', 'Arial', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    -webkit-transition: background 0.4s; /* For Safari 3.1 to 6.0 */
+    transition:  background 0.4s;
+}
+
+.texto-header{
+	background-color: #218c74;
+    margin-top: 15px;
+    color: white;
+    font-family: 'Fredoka One', 'Open Sans', 'Arial', sans-serif;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover{
+	color:#218c74;
+	background-color: white;
+
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover{
+	color: white;
+	background-color:#218c74;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+	color:#218c74;
+	background-color: white; 
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	margin-top: 20px;
+}
+
+.dropdown-menu > li > a{
+	color:white;
+	background-color:#218c74;
+	font-family: 'Fredoka One', 'Open Sans', 'Arial', cursive;
+	text-transform: uppercase;
+	-webkit-transition: background 0.4s; /* For Safari 3.1 to 6.0 */
+    transition:  background 0.4s;
+}
+
+.dropdown-menu{
+	padding: 0px 0px;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover{
+	color:#218c74;
+	background-color: white;
+}
+
+.navbar-toggle{
+	margin-top: 30px;
+}
+/*
+.active{
+	background-color: white;
+	color:#218c74;
+}*/
+
+.navbar-default {
+	min-height: 100px;
+	background-color:#218c74;
+	color:none;
+	border-radius: 0px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+/*	border-bottom-width: 5px;
+	border-bottom-color: #B9FCDF; */
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a{
+	color: white;
+	background-color:#218c74;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover{
+	background-color: white;
+	color:#218c74;
+}
+
+.navbar-default .navbar-toggle{
+	border-color: white;
+	color:white;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: white;
+}
+
+.titulo-ppal{
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+	border-bottom-width: 4px;
+	border-bottom-color:  #218c74;
+	border-bottom-style: solid;
+	padding-bottom: 5px;
+	margin-top: -10px;
+}
+
+.panel-default > .panel-heading {
+	background-color: #218c74;
+	color: white;
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+
+}
+
+
+.panel-default {
+	border-color: #218c74;
+}
+
+.panel-title{
+		font-size: 18px;
+}
+
+.btn-info{
+	width: 100% ;
+	font-size: 16px;
+	background-color: #218c74;
+	color: white; 
+	border: none;
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+}
+
+#cant-res{
+	display: none;
+}
+
+.list-group-item{
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+
+}
+
+.titulo-res:hover{
+	/*font-size: 18px;*/
+}
+
+.subtitulo-res{
+	color: #9F9F9F;
+}
+/*
+.list-group-item:hover{
+	text-transform: uppercase;
+	text-align: right;
+	font-size: 18px;
+
+}*/
+
+#nombre{
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom-width: 1px;
+	border-bottom-color: #218c74;
+	border-radius: 0px;
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+	box-shadow: none;
+}
+
+#nombre:hover, #nombre:focus{
+	border-bottom-width: 3px;
+	box-shadow: none;
+}
+
+.label-filtros{
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+}
+
+
+
+/*CONFIGURANDO EL ICONO DEL INPUT RANGE DE DISTANCIA (PONIENDO UNA PELOTITA)*/
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 32px;
+	width: 32px;
+	background-color: transparent;
+	background-image: url(../images/ball.png);
+	cursor: pointer;
+	margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+	border:none;
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+	height: 32px;
+	width: 32px;
+	background-color: transparent;
+	background-image: url(../images/ball.png);
+	cursor: pointer;
+	border:none;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+	height: 32px;
+	width: 32px;
+	background-color: transparent;
+	background-image: url(../images/ball.png);
+	cursor: pointer;
+	border:none;
+}
+
+#btn-mas, #btn-menos{
+	border:none;
+	color: #218c74;
+}
+
+#btn-mas:hover, #btn-menos:hover{
+	background-color: #218c74;
+	color:white;
+}
+
+#contenido-tamanio{
+	margin-left: 30px;
+}
+
+#input-tamanio{
+	background-color: transparent;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom-width: 3px;
+	border-bottom-color: #218c74;
+	text-align: center;
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+	box-shadow: none;
+}
+
+.glyphicon-menu-left, .glyphicon-menu-right{
+	font-size: 30px;
+}
+
+
+/*comentarios*/
+
+#titulo-comment{
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+	border-bottom-width: 4px;
+	border-bottom-color:  #218c74;
+	border-bottom-style: solid;
+	padding-bottom: 5px;
+}
+
+.deja-comments{
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+}
+
+#nombre-comment, #input-comment{
+	background-color: transparent;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom-width: 1px;
+	border-bottom-color: #218c74;
+	border-radius: 0px;
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+	box-shadow: none;
+	font-size: 18px; 
+}
+
+.label-comments{
+	font-family: 'IBM Plex Sans', 'Arial', sans-serif;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+#input-comment{
+	height: 40px;
+}
+
+
+#nombre-comment:hover, #input-comment:hover, #nombre-comment:focus, #input-comment:focus{
+	border-bottom-width: 3px;
+}
+
+#input-comment:focus{
+	height: 200px;
+}
+
+#btn-comment{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	float: right;
+	width: 150px;
+	font-size: 20px;
+}
+
+.text-comment{
+	font-size: 16px;
+}
+
+.icono-comment {
+    color: #218c74;
+    opacity: 0.8;
+}
+
+.well{
+	background-color: transparent;
+
+}
+
+.media-heading{
+    color: #218c74;
+    font-weight: 700;
+}
+
+
+
+/* README*/
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+	border-color: #218c74;
+}
+
+.nav-tabs{
+	border-color: #218c74;
+}
+
+/*MODAL*/
+.modal-body{
+  color:#000;
+  font-family: 'IBM Plex Sans';
+  font-size: 18px;
+  padding: 0px;
+}
+.texto-modal{
+  padding-top: 40px;
+}
+
+.modal-header{
+	
+  text-align: center;
+  font-weight: 700;
+}
+
+.swal2-popup {
+  font-size: 1.6rem !important;
+}

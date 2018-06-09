@@ -1,0 +1,29 @@
+{% extends 'layout.twig' %}
+
+{% block headimports %}
+  <!--CDN Sweet Alert-->
+  <script src="/javascripts/sweetalert2.all.js"></script>
+{% endblock %}
+
+{% block body %}
+	{% if app.session.get('success') %}
+		<div class="alert alert-success" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<strong>Éxito! </strong>><span>{{ app.session.get('success')}}</span>
+		</div>
+	{% endif %}
+  {{parent()}}
+
+	<!-- CONTENIDO GENERAL -->
+	<div class="gral-container" id="gral-container">
+		<div class="container">
+			<h2 class="titulo-ppal"> Complejos de Futbol </h2>
+			
+			    {% for comp in complejos %}
+			        <div class="well well-sm">{{ comp.nombre }}</div>
+			    {% endfor %}
+			
+		</div>
+	</div>
+  
+{% endblock %}
