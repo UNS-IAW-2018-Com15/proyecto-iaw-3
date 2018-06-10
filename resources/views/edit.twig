@@ -1,0 +1,136 @@
+{% extends 'layout' %}
+{% block headimports %}
+  <!--CDN Sweet Alert-->
+  <script src="/js/sweetalert2.all.js"></script>
+  <script src="/js/cancha.js"></script>
+  <script src="/js/comentario.js"></script>
+{% endblock %}
+
+{% block body %}
+	{% if app.session.get('error') %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+		 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		 <strong>Error! </strong>{{ app.session.get('error')}}.
+		</div>
+			
+	{% endif %}
+	
+	{{parent()}}
+
+	<div class="container">
+		<h2 class="titulo-ppal"> Editar Complejo </h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Actualizar</h3>
+			</div>
+			<div class="panel-body">
+				<form id="form-add" action="/complejos/edit/cancha" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="_token" value="{{ csrf_token('jeje') }}">
+					<input class="form-control input-lg" name="ide" type="hidden"  value={{complejo._id}} maxlength="64">
+					<div class="form-group">
+						<label >Nombre</label>
+						<input class="form-control input-lg" name="nombre" type="text" value="{{complejo.nombre}}" maxlength="64">
+					</div>
+
+					<div class="form-group">
+						<label >Direccion</label>
+						<input class="form-control input-lg" name="direccion" type="text" value="{{complejo.direccion}}" maxlength="120">
+					</div>
+
+					<div class="form-group">
+						<label >Coordenadas(lat-long)</label>
+						<div class="row">
+							<div class="col-xs-6">
+								<input class="form-control input-lg" name="latitud" type="text" value="{{complejo.coordenadas[0]}}" maxlength="10">
+							</div>
+							<div class="col-xs-6">
+								<input class="form-control input-lg" name="longitud" type="text" value="{{complejo.coordenadas[1]}}" maxlength="10">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label> Teléfono</label>
+						<input class="form-control input-lg" name="telefono" type="text" value="{{complejo.telefono}}" maxlength="32">
+					</div>
+
+					<div class="form-group">
+						<label>Horarios(abre-cierra)</label>
+						<div class="row">
+							<div class="col-xs-1">
+								Lunes
+								<input class="form-control" name="lunes" type="text" value="{{complejo.horarios[0]}}"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Martes
+								<input class="form-control" name="martes" type="text"value="{{complejo.horarios[1]}}"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Miércoles
+								<input class="form-control" name="miercoles" type="text" value="{{complejo.horarios[2]}}"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Jueves
+								<input class="form-control" name="jueves" type="text" value="{{complejo.horarios[3]}}"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Viernes
+								<input class="form-control" name="viernes" type="text" value="{{complejo.horarios[4]}}"  maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Sábado
+								<input class="form-control" name="sabado" type="text" value="{{complejo.horarios[5]}}"   maxlength="5">
+							</div>
+							<div class="col-xs-1">
+								Domingo
+								<input class="form-control" name="domingo" type="text" value="{{complejo.horarios[6]}}"   maxlength="5">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+
+						<div><label>Canchas</label></div>
+					  {% for cancha in complejo.canchas %}  
+				      	<div class="col-xs-6">
+				      		<div id="cancha-{{loop.index}}" class="complejo-row well well-sm ">
+								<span class="izquierda">
+									Tamaño:  {{ cancha.tamanio}} |   Material: {{cancha.material}}
+								</span>
+								<span class="derecha">
+						      	<button type="button" onclick="removeCancha('{{complejo._id}}','{{cancha.tamanio}}','{{cancha.material}}','{{loop.index}}')" class="glyphicon glyphicon-remove btn rojo"></button>
+					      		</span>
+				      		</div>
+						</div>
+				    {% endfor %}
+					</div>
+					<br>
+					<br>
+					<br>
+					<div class="form-group">
+
+						<div><label>Comentarios</label></div>
+					  {% for comentario in complejo.comentarios %}  
+				      	<div class="col-xs-12">
+				      		<div id="coment-{{loop.index}}" class="complejo-row well well-sm ">
+								<span class="izquierda">
+									Nombre:  {{ comentario.nombre}}<br>{{comentario.contenido}}
+								</span>
+								<span class="derecha">
+						      	<button type="button" onclick="removeComentario('{{complejo._id}}','{{comentario._id}}','{{loop.index}}')" class="glyphicon glyphicon-remove btn rojo"></button>
+					      		</span>
+				      		</div>
+						</div>
+				    {% endfor %}
+					</div>
+
+					</div>
+					<br>
+					<button type="submit" class="btn btn-info btn-comment">Guardar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

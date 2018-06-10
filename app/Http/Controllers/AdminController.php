@@ -18,7 +18,7 @@ public function add(){
 
 public function save(Request $request){
 
- $fail = $this->validarComplejo($request);
+ $fail = $this->validarComplejo($request,false);
  if($fail != "ok")
   return redirect()->back()->with(['error' => $fail]);
 
@@ -42,13 +42,18 @@ $complejo->horarios = [$request->lunes, $request->martes, $request->miercoles,
 /*
 *	Comprueba que los parametros recibidos del request sean correctos
 */
-private function validarComplejo($request){
+private function validarComplejo($request,$compararIde){
 
  if(empty($request->nombre))
   return "El nombre no puede ser vacio.";
-$comp = Complejo::where('nombre',$request->nombre)->get();
-if(isset($comp[0]))
-  return "El nombre de complejo ".$request->nombre." ya existe.";
+  $comp = Complejo::where('nombre',$request->nombre)->get();
+
+if($compararIde && isset($comp[0])){
+      if($comp[0]->_id != $request->ide)
+        return "El nombre de complejo".$request->nombre." ya existe.";
+}
+else if(isset($comp[0]))
+    return "El nombre de complejo ".$request->nombre." ya existe.";
 if(empty($request->direccion))
   return "La direccion no puede ser vacia.";
 if(empty($request->latitud) || empty($request->longitud))
@@ -87,7 +92,7 @@ public function delete($id){
   if(!isset($comp[0]))
     return response()->json(['error' => 'error'],404);
   else
-      Complejo::where('_id',$id)->delete();
+    Complejo::where('_id',$id)->delete();
   return response()->json(['success' => 'success'],200);
 }
 
@@ -104,4 +109,69 @@ public function saveCancha(Request $request){
   return response()->json(['success' => 'success'],200);
 }
 
+public function update(Request $request){
+
+  $fail = $this->validarComplejo($request,true);
+  if($fail != "ok")
+    return redirect()->back()->with(['error' => $fail]);
+
+  $comp = Complejo::where('_id',$request->ide)->get();
+  $complejo = $comp[0];
+  $complejo->nombre = $request->nombre;
+  $complejo->direccion = $request->direccion;
+  $lat = doubleval($request->latitud);
+  $lon = doubleval($request->longitud);
+  $complejo->coordenadas = [$lat,$lon];
+  $complejo->telefono = $request->telefono;
+  $complejo->horarios = [$request->lunes, $request->martes, $request->miercoles,
+    $request->jueves, $request->viernes, $request->sabado, $request->domingo];
+  $complejo->save();
+    return redirect('/complejos')->with(['success' => 'Se ha actualizado el complejo '.$complejo->nombre]);
+  }
+
+  public function edit($id){
+      $comp = Complejo::where('_id',$id)->get();
+      if(!isset($comp[0]))
+          return redirect()->back()->with(['error' => 'Cancha no encontrada']);
+      return view('edit')->with('complejo',$comp[0]);
+  }
+
+  public function deleteCancha(Request $request){
+
+    $comp = Complejo::where('_id',$request->id)->get();
+    if(!isset($comp[0]))
+      return response()->json(['error' => 'error> no existe el complejo '.$request->id],404);
+    $complejo =  $comp[0];
+    $cancha['id'] = "1";    //DEPRECATED
+    $cancha['tamanio'] = $request->tamanio;
+    $cancha['material'] = $request->material;
+    $canchas=$complejo->canchas;
+    $i = 0;
+    $nuevos = array();
+    foreach ($canchas as $value) {
+        if($value['tamanio'] != $request->tamanio && $value['material'] != $request->material)
+             $nuevos[$i++]=$value;
+    }
+    $complejo->canchas = $nuevos;
+    $complejo->save();
+    return response()->json(['success' => 'success'],200);
+  }
+
+  public function deleteComentario(Request $request){
+
+    $comp = Complejo::where('_id',$request->idComplejo)->get();
+    if(!isset($comp[0]))
+      return response()->json(['error' => 'error> no existe el complejo'.$request->id],404);
+    $complejo =  $comp[0];
+    $comentarios=$complejo->comentarios;
+    $i = 0;
+    $nuevos = array();
+    foreach ($comentarios as $value) {
+        if($value['_id'] != $request->idComentario)
+             $nuevos[$i++]=$value;
+    }
+    $complejo->comentarios = $nuevos;
+    $complejo->save();
+    return response()->json(['success' => 'success'],200);
+  }
 }
