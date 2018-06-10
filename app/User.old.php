@@ -6,8 +6,8 @@ use Jenssegers\Mongodb\Auth\User as Authenticatable;
 class User extends Authenticatable{
     use Notifiable;
 
-    protected $collection = 'users';
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *

@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+ {{parent()}}
+<div class="container">
+ <form action="/login" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token('auth') }}">
+    <input class="form-control input-lg" type="text" name="username" placeholder="Usuario" maxlength="120" autofocus="autofocus">
+    <input class="form-control input-lg" type="password" name="password" placeholder="Contraseña" maxlength="32">
+    <button type="submit" class="btn btn-info btn-comment">Ingresar</button>
+  </form>
+</div>
+{% endblock %}
