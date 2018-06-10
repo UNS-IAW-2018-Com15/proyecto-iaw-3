@@ -3,26 +3,27 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
 
-class User extends Authenticatable{
+class User extends Authenticatable {
     use Notifiable;
 
-    protected $collection = 'users';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+   /**
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
     protected $fillable = [
-        'username', /*'email'*/, 'password',
+        'name', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+
+   /**
+    * The attributes that should be hidden for arrays.
+    *
+    * @var array
+    */
+   protected $hidden = [
+       'password', 'remember_token',
+   ];
+
+
 }

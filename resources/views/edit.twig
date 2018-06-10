@@ -24,7 +24,7 @@
 				<h3 class="panel-title">Actualizar</h3>
 			</div>
 			<div class="panel-body">
-				<form id="form-add" action="/complejos/edit/cancha" method="POST" enctype="multipart/form-data">
+				<form id="form-add" action="/complejos/edit" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="_token" value="{{ csrf_token('jeje') }}">
 					<input class="form-control input-lg" name="ide" type="hidden"  value={{complejo._id}} maxlength="64">
 					<div class="form-group">
