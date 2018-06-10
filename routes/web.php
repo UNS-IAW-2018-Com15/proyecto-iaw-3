@@ -38,9 +38,19 @@ Route::group(['prefix' => 'complejos'], function() {
 	
 });
 
-/*
-Route::get('/login', 'Auth\LoginController@showLoginForm') -> name('login');
-Route::post('/login', 'Auth\LoginController@login');
-Route::post('/logout', 'Auth\LoginController@logout') -> name('logout');*/
 
-Auth::routes();
+Route::get('/login', function(){
+	return view('auth.login')->with('guest','guest');
+}) -> name('login');
+Route::post('/login', 'Auth\LoginController@login');
+
+Route::post('/logout', 'Auth\LoginController@logout') -> name('logout');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+
+/*Route::get('/register', function(){
+	return view('auth.register2')->with('guest','guest');
+}) -> name('register');
+Route::post('/register', 'Auth\RegisterController@register');
+*/
+//Estas rutas son para usar el Auth de laravel (con blade)
+//Auth::routes();

@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>La Caprichosa: Admin</title>
-    {% block headimports %}
-    {% endblock %}
+    
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <link rel='stylesheet' href='/css/bootstrap/bootstrap.min.css' />
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Raleway|Fredoka+One|Open+Sans" rel="stylesheet">
-    <link id='css-estilo' rel='stylesheet' href='/css/nuevo.css' />
-    <link id='css-estilo' rel='stylesheet' href='/css/estilo1.css' />
+    <link id='css-estilo' rel='stylesheet' href='{{ asset("css/nuevo.css") }}' />
+    <link id='css-estilo' rel='stylesheet' href='{{ asset("css/estilo1.css") }}' />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <script>
-      function goBack() {
-          window.history.back();
-      }
-    </script>
     <!--<script type='text/javascript' src='/javascripts/estilos.js'></script>
     <script type='text/javascript' src='/javascripts/local-storage.js'></script>
     <script type='text/javascript' src='/javascripts/funciones.js'></script>
@@ -27,9 +26,9 @@
     <script type='text/javascript' src='/javascripts/comentarios.js'></script>-->
   </head>
   <body class="miBody">
-    {% block body %}
-      {% include 'header.twig'%}
-    {% endblock %}
- 	<script type="text/javascript" src='/js/bootstrap/bootstrap.min.js'></script>
+    @include('header')
+    @yield('content')
+
+ 	 <script type="text/javascript" src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
   </body>
 </html>

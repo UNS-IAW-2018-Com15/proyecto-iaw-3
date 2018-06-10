@@ -19,7 +19,17 @@
 	<!-- CONTENIDO GENERAL -->
 	<div class="gral-container" id="gral-container">
 		<div class="container">
-			<h2 class="titulo-ppal"> Complejos de Futbol </h2>
+			<div class="row">
+				<div class="col-xs-9">
+					<h2 class="titulo-ppal"> Complejos de Futbol </h2>
+				</div>
+				<div class="col-xs-3">
+					<button class="btn btn-success" onclick="location.href = '/complejos/add';">
+						<span class="glyphicon glyphicon-plus "></span>
+						Nuevo Complejo
+					</button>
+				</div>
+			</div>
 				<div class="row">
 				    {% for comp in complejos %}  
 				      	<div class="col-xs-12">
