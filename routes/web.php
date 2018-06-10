@@ -20,6 +20,10 @@ Route::get('/complejos', 'AdminController@show');
 Route::group(['prefix' => 'complejos'], function() {
 
 	Route::get('/add', 'AdminController@add');
-  Route::get('/delete/{id}','AdminController@delete');
 	Route::post('/add', 'AdminController@save');
+
+	Route::post('/add/cancha', 'AdminController@saveCancha');
+
+  	Route::get('/delete/{id}','AdminController@delete');
+	
 });

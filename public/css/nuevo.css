@@ -18,27 +18,36 @@
 }
 
 .derecha{
-	margin-top: -5px;
+	margin-top: -9px;
 	float: right;
 }
 
 .izquierda{
 	font-size: 18px;
+	margin-top: -1px;
 	float: left;
 }
 
 .rojo{
 	color: #C15252;
+	background-color: rgba(0,0,0,0);
 }
 
 .azul{
 	color: #6565C9;
+	background-color: rgba(0,0,0,0);
 }
 
 .verde{
 	color: #6BCA6B;
+	background-color: rgba(0,0,0,0);
 }
 
 .complejo-row{
 	padding-bottom: 25px;
+	background-color: rgba(97, 179, 183, 0.1) !important;
+}
+
+.form-cancha{
+	padding-bottom: 10px;
 }

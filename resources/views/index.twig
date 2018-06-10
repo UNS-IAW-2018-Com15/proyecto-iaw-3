@@ -4,6 +4,7 @@
   <!--CDN Sweet Alert-->
   <script src="/js/sweetalert2.all.js"></script>
   <script src="/js/remove.js"></script>
+  <script src="/js/cancha.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -21,19 +22,18 @@
 			<h2 class="titulo-ppal"> Complejos de Futbol </h2>
 				<div class="row">
 				    {% for comp in complejos %}  
-				      	<div class="col-xs-6">
-				      		<div id="comp-{{comp.id}}" class="well well-sm complejo-row">
+				      	<div class="col-xs-12">
+				      		<div id="comp-{{comp.id}}" class="complejo-row well well-sm ">
 								<span class="izquierda">
 									{{ comp.nombre }}
 								</span>
 								<span class="derecha">
-					      			<button onclick="addCancha('{{comp.id}}')" class="glyphicon glyphicon-th-list btn verde"></button>
+					      			<button onclick="formCancha('{{comp.id}}')" class="glyphicon glyphicon-th-list btn verde"></button>
 						      		<button class="glyphicon glyphicon-pencil btn azul"></button>
 						      		<button onclick="remove('{{comp.id}}')" class="glyphicon glyphicon-remove btn rojo"></button>
 					      		</span>
 				      		</div>
-
-
+				      		<div id="form-{{comp.id}}"></div>
 						</div>
 				    {% endfor %}
 				</div>
